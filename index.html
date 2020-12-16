@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Document</title>
 </head>
 <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        //AJAX call
+
+        const queryURL = "https://opentdb.com/api.php?amount=10"
+
+$.ajax({
+  url: queryURL,
+  method: "GET"
+}).then(function(response) {
+    
+  console.log(queryURL);
+ 
+  console.log(response);
+
+});
+
+    </script>
     
 </body>
 </html>
