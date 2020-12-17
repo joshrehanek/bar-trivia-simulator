@@ -3,28 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <!-- Foundation CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+
     <title>Document</title>
 </head>
 <body>
+    <h1>Title goes here</h1>
+      <div class="grid-container fluid">
+          <div class="grid-x">
+            <div class="cell medium-6">6 cell About Us Section?</div>
+            <div class="cell medium-6">6 cell High Score Section?</div>
+          </div>
+        <br>
+          <div class="grid-x">
+            <div class="cell">Quiz Start Button Cell</div>
+          </div>
+        <br>
+          <div class="grid-x">
+            <div class="cell medium-6">Drink of the Hour Section</div>
+            <div class="cell medium-6">Highlighted Drink Section</div>
+          </div>
+      </div>
+    <!--Bar Script start-->
+    <!--Bar Script end-->
+    <!--Triva Script start-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        //AJAX call
-
+        //AJAX call for Open Trivia
         const queryURL = "https://opentdb.com/api.php?amount=10"
 
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function(response) {
-    
-  console.log(queryURL);
- 
-  console.log(response);
+              $.ajax({
+                url: queryURL,
+                method: "GET"
+              }).then(function(response) {
+                  
+                console.log(queryURL);
+              
+                console.log(response);
 
-});
+              });
+    </script>  
+    <!--Triva Script end-->
+<!-- Foundation JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
 
-    </script>
-    
 </body>
 </html>
