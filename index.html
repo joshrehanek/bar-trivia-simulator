@@ -6,48 +6,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--Compressed CSS-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
-  integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/style.css">
   <title>Document</title>
 </head>
 
 <body>
-  
+
   <h1>Title goes here</h1>
   <div class="grid-container fluid">
-      <div class="grid-x">
-        <div class="cell medium-6">6 cell About Us Section?</div>
-        <div class="cell medium-6">6 cell High Score Section?</div>
-      </div>
+    <div class="grid-x">
+      <div class="cell medium-6">6 cell About Us Section?</div>
+      <div class="cell medium-6">6 cell High Score Section?</div>
+    </div>
     <br>
-      <div class="grid-x">
-        <div class="cell">          
-          <button class="btn btn-warning btn-xs theme-button">
-          <span class="fa fa-puzzle-piece"></span> Start Bar Trivia!</button></div>
+    <div class="grid-x">
+      <div class="cell">
+        <button class="btn btn-warning btn-xs theme-button">
+          <span class="fa fa-puzzle-piece"></span> Start Bar Trivia!</button>
       </div>
+    </div>
     <br>
-      <div class="grid-x">
-        <div class="cell medium-6">Drink of the Hour Section</div>
-        <div class="cell medium-6">Highlighted Drink Section</div>
-        <!-- Add ingredients -->
+    <div class="grid-x">
+      <!-- turning these drink divs into cards -->
+      <div class="card cell medium-6">
+        <img class="card-img" src="https://placehold.it/350x300" alt="header" />
+        <div class="card-info">
+          <h1 class="card-title">Drink of the Hour Section</h1>
+          <div class="card-icon">6</div>
+          <p class="card-author">Author Name</p>
+          <p class="card-stats">6 <img src="https://placehold.it/20" alt="hi" /> 6 <img src="https://placehold.it/20"
+              alt="hi" /></p>
+        </div>
       </div>
+      <div class="card cell medium-6">
+        <img class="card-img" src="https://placehold.it/350x300" alt="header" />
+        <div class="card-info">
+          <h1 class="card-title">Highlighted Drink Section</h1>
+          <div class="card-icon">6</div>
+          <p class="card-author">Author Name</p>
+          <p class="card-stats">6 <img src="https://placehold.it/20" alt="hi" /> 6 <img src="https://placehold.it/20"
+              alt="hi" /></p>
+        </div>
+      </div>
+      <!-- Add ingredients -->
+    </div>
   </div>
-  
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
     //AJAX call
 
     const queryURL = "https://opentdb.com/api.php?amount=10"
 
-    $.ajax({
+    $.ajax( {
       url: queryURL,
       method: "GET"
-    }).then(function (response) {
+    } ).then( function ( response )
+    {
 
-      console.log(queryURL);
+      console.log( queryURL );
 
-      console.log(response);
+      console.log( response );
 
-    });
+    } );
 
   </script>
 
