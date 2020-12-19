@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <!-- compressed foundation js -->
   <script defer src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
-  integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+    integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
   <!--Compressed CSS-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
     integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
@@ -19,14 +19,18 @@
 
 <body>
   <div data-sticky-container>
-    <div class="title-bar" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">
-      <div class="title-bar-left"><!-- Content --></div>
-      <div class="title-bar-right"><!-- Content -->
-      <ul class ="menu">
-        <li><a href="#">Home Page</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">High Scores</a></li>
-      </ul>
+    <div class="title-bar" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="1"
+      data-btm-anchor="content:bottom">
+      <div class="title-bar-left">
+        <!-- Content -->
+      </div>
+      <div class="title-bar-right">
+        <!-- Content -->
+        <ul class="menu">
+          <li><a href="#">Home Page</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">High Scores</a></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -72,18 +76,9 @@
     </div>
     <div class="grid-x">
       <div class="cell large-auto">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li>
-            <a href="#">Item 1</a>
-            <ul class="menu">
-              <li><a href="#">Item 1A</a></li>
-              <!-- ... -->
-            </ul>
-          </li>
-          <li><a href="#">Item 2</a></li>
-          <li><a href="#">Item 3</a></li>
-          <li><a href="#">Item 4</a></li>
-        </ul>
+        <div id="searchWrapper">
+          <input type="text" name="searchBar" id="searchBar" placeholder="search for a drink" />
+        </div>
       </div>
     </div>
   </div>
@@ -107,7 +102,7 @@
     } );
 
   </script>
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
