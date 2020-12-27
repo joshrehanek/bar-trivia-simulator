@@ -39,7 +39,7 @@ $(document).ready(function () {
     correctAnswer.click(function(event) {
         event.preventDefault();
         alert("correct");
-        useApiData();
+        sendApiRequest();
     })
 })
 
