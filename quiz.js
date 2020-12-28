@@ -3,11 +3,11 @@ $(document).ready(function () {
 
     let gameZoneEl = $('#game-zone');
     let answerZoneEl = $('answer-zone');
-    let rightWrongEl = $('right-wrong');
+    let rightWrongEl = $('#right-wrong');
     let choiceContainers = $('choice-container');
-
-
-    console.log("ready!");
+    // let scoreEl = $('#score');
+    let score = 0;
+    questionIndex = 0;
 
     //start function
     window.onload = sendApiRequest();
@@ -15,16 +15,25 @@ $(document).ready(function () {
     //Api requests
     async function sendApiRequest() {
         let response = await fetch(`https://opentdb.com/api.php?amount=10&type=multiple`)
-        console.log(response)
         let data = await response.json()
+        //ends game after 3 questions
+        if (questionIndex === 10) {
+            //stores score in Local Storage
+            localStorage.setItem('mostRecentScore', score);
+            //send user to end-game.html page
+            return window.location.assign("./end-game.html");
+
+        }
         console.log(data)
         useApiData(data)
     }
     //Pull data from API
     function useApiData(data) {
+
         const category = data.results[0].category;
         const question = data.results[0].question;
         console.log(category)
+        $("#score").text(`Score: ${score}`)
         $("#category").text(`Category: ${category}`)
         $("#question").text(`Question: ${question}`)
         $("#answer1").text(data.results[0].correct_answer)
@@ -32,16 +41,52 @@ $(document).ready(function () {
         $("#answer3").text(data.results[0].incorrect_answers[1])
         $("#answer4").text(data.results[0].incorrect_answers[2])
         //Answer randomization
+        questionIndex++;
+        console.log(questionIndex);
+
     }
 
-    let correctAnswer = $("#answer1");
 
-    correctAnswer.click(function(event) {
+    let choices = $("button");
+
+    choices.click(function (event) {
         event.preventDefault();
-        alert("correct");
-        sendApiRequest();
+
+        let correctAnswer = "answer1";
+        let choice = $(this).attr('id');
+        console.log(choice);
+        if (choice === correctAnswer) {
+            score++;
+        }
+        setTimeout(function () {
+            //restart newQuestion function
+            sendApiRequest();;
+        }, 1000)
+
     })
 })
+
+    // function validateAnswer(data) {
+    //     console.log(this);
+    //     //if the value of answer does not match the answer listed in the questions objects..
+    //     if (this.value !== data.results[0].correct_answer) {
+    //         //display "WRONG" in right-wrong div
+    //         rightWrongEl.textContent = "WRONG";
+    //         //if the value does match...
+    //     } else {
+    //         //displat "RIGHT" in the right-wrong div
+    //         rightWrongEl.textContent = "RIGHT";
+    //         score++;
+    //     }
+    //     //add 1 to questionIndex
+    //     questionIndex++;
+    //     //setTimeout for 1 second after each question is answered
+    //     setTimeout(function () {
+    //         //restart newQuestion function
+    //         newQuestion();
+    //     }, 1000)
+
+    // }
 
     // array.forEach(element => {
 
@@ -122,4 +167,3 @@ $(document).ready(function () {
 
 
 
-    
