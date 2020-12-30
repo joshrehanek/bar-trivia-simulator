@@ -46,7 +46,7 @@ $(document).ready(function () {
         const randomQuestionChoices = questionChoices.sort(() => Math.random() - 0.5);
         console.log(randomQuestionChoices);
         randomQuestionChoices.forEach(function (value) {
-            let tempBtn = $('<button>').text(value).val(value).addClass('question-button').click(validateAnswer);
+            let tempBtn = $('<button>').text(value).val(value).addClass('hollow button').click(validateAnswer);
             answerZoneEl.append(tempBtn);
         })
 
