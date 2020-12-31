@@ -4,39 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+     <!-- JQuery CDN -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Compressed CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
         integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
     <!-- Compressed JavaScript -->
     <script defer src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
         integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
-    <!-- JQuery CDN -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <link rel="stylesheet" href="./assets/style.css">
     <title>Bar Trivia Quiz</title>
 </head>
 
 <body>
-    <label>
-        enter name here
-        <textarea placeholder="Username"></textarea>
-    </label>
-
-    <div class="grid-container">
-        <div class="row">
-            <div class="small-6 large-centered columns">About us goes here</div>
+    <div class="container">
+        <div id="end" >
+            <h1 id="finalScore"></h1>
+            <form>
+                <input type="text" name="username" id="username" placeholder="username" />
+                <button type="submit" class="button" id="saveScoreBtn" onclick="saveHighScore(event)">
+                    Save
+                </button>
+            </form>
+            <a class="button" href="./quiz.html">Take the Quiz Again</a>
+            <a class="button" href="./index.html">Head Back Home</a>
         </div>
     </div>
-
-
-</body>
-
-        <div class="grid-x grid-margin-x">
-          <div class="cell small-4">cell</div>
-        </div>
-      </div>
-
-      <script src="end-game.js"></script>
+    <div id="about-us" >About us section with links to the APIS we used.</div>
+    <script src="./end-game.js"></script>
 </body>
 
 </html>

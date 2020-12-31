@@ -1,3 +1,15 @@
+// variables
+const highScoresListEl = $('#highScoresList');
+const highScoresEl = JSON.parse(localStorage.getItem('highScores')) || [];
+
+// Map object holds key-value pairs and remembers the original insertion order of the keys.
+// returns list of high scores in the HTML's innertext
+highScoresListEl.html( 
+    highScoresEl.map(score => {
+        // uses 'template literal' to return ouput strings with values
+        return `<li class='high-score'>${score.name} - ${score.score}</li>`;       
+    }))
+
 // this random url will be used as the 'Drink of the Hour' card.
 const randomDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
 
@@ -29,3 +41,51 @@ $.ajax( {
 
 
 } );
+
+// const loadDrankz = async () => {
+//             try {
+//                 const response = await fetch( searchDrinkURL );
+//                 // hpCharacters = await response.json();
+//                 displayCharacters( hpCharacters );
+
+
+//     } catch ( err ) {
+//         console.error( err );
+//     }
+// };
+// console.log
+
+
+// const charactersList = document.getElementById( 'charactersList' );
+// const searchBar = document.getElementById( 'searchBar' );
+// let hpCharacters = [];
+
+// searchBar.addEventListener( 'keyup', ( e ) => {
+//     const searchString = e.target.value.toLowerCase();
+
+//     const filteredCharacters = hpCharacters.filter( ( character ) => {
+//         return (
+//             character.name.toLowerCase().includes( searchString ) ||
+//             character.house.toLowerCase().includes( searchString )
+//         );
+//     } );
+//     displayCharacters( filteredCharacters );
+// } );
+
+
+// const displayCharacters = ( characters ) => {
+//     const htmlString = characters
+//         .map( ( character ) => {
+//             return `
+//             <li class="character">
+//                 <h2>${character.name}</h2>
+//                 <p>House: ${character.house}</p>
+//                 <img src="${character.image}"></img>
+//             </li>
+//         `;
+//         } )
+//         .join( '' );
+//     charactersList.innerHTML = htmlString;
+// };
+
+// loadCharacters();

@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- font awesome cdn -->
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <!-- compressed foundation js -->
   <script defer src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
     integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
@@ -38,14 +39,16 @@
   <h1>Title goes here</h1>
   <div class="grid-container fluid">
     <div class="grid-x">
-      <div class="cell medium-6">6 cell About Us Section?</div>
-      <div class="cell medium-6">6 cell High Score Section?</div>
+      <div class="cell medium-6">About Us Section</div>
+      <div id="scores" class="cell medium-6">
+        <h1 id="finalScore">High Scores</h1>
+            <ul id="highScoresList"></ul>
+      </div>
     </div>
     <br>
     <div class="grid-x">
       <div class="cell">
-        <button class="btn btn-warning btn-xs theme-button">
-          <span class="fa fa-puzzle-piece"></span> Start Bar Trivia!</button>
+        <a class="button large" href="./quiz.html">Start Bar Trivia</a>
       </div>
     </div>
     <br>
@@ -76,14 +79,24 @@
     </div>
     <div class="grid-x">
       <div class="cell large-auto">
-        <div id="searchWrapper">
-          <input type="text" name="searchBar" id="searchBar" placeholder="search for a drink" />
+        <div class="button-group expanded">
+          <a class="warning button hollow">Martini</a>
+          <a class="warning button hollow">Highball</a>
+          <a class="warning button hollow">Sazerac</a>
+          <a class="warning button hollow">Mojito</a>
+          <a class="warning button hollow">Margarita</a>
         </div>
+
+        <!-- <div id="searchWrapper">
+          <input type="text" name="searchBar" id="searchBar" placeholder="search for a drink" /> -->
       </div>
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="script.js"></script>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+  <script src="./script.js"></script>
+
 </body>
 
 </html>

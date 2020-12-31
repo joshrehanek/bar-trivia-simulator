@@ -8,37 +8,35 @@
     <!-- Compressed CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
         integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
-   <!-- JQuery CDN -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- JQuery CDN -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Compressed JavaScript -->
     <script defer src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
         integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
- 
+    <script defer src="quiz.js"></script>
+    <!-- <link rel="stylesheet" href="./assets/style.css"> -->
     <title>Bar Trivia Quiz</title>
 </head>
 
 <body>
     <div class="grid-x">
-        <div class="cell">current score (left or right side) and possible timer(side opposite score) will go in this div
+        <div id="score" class="cell">
         </div>
     </div>
-  <br>
+    <br>
     <div class="container">
         <div class="row">
             <div id="game-zone" class="small-6 large-centered columns">
                 <h2>
                     <p id="category"></p>
-                    <p id="question"></p>     
+                    <p id="question"></p>
                 </h2>
-                <div id = "answer-zone">
+                <div id="answer-zone">
                 </div>
-                <div id = "right-wrong">right/wrong answer indicator will appear in this div</div>
+                <div id="right-wrong"></div>
             </div>
         </div>
     </div>
-
-
-    <script src="quiz.js"></script>
 </body>
 
 </html>

@@ -1,39 +1,83 @@
-//document ready
 $(document).ready(function () {
-    console.log("ready!");
 
-    //start function
-    window.onload = sendApiRequest();
+    //DOM Variables
+    const scoreEl = $("#score")
+    const categoryEl = $("#category");
+    const questionEl = $("#question");
+    const answerZoneEl = $("#answer-zone");
+    const rightWrongEl = $("#right-wrong");
+
+    //initial variables
+  
+    let questions = [];
+    let score = 0;
+    let questionIndex = 0;
+    let correctAnswer;
 
     //Api requests
     async function sendApiRequest() {
-        let response = await fetch(`https://opentdb.com/api.php?amount=10&type=multiple`)
-        console.log(response)
-        let data = await response.json()
-        console.log(data)
-        useApiData(data)
-    }
-    //Pull data from API
-    function useApiData(data) {
-        const category = data.results[0].category;
-        const question = data.results[0].question;
-        console.log(category)
-        $("#category").text(`Category: ${category}`)
-        $("#question").text(`Question: ${question}`)
+        // possible toggle inputs to change api request for question type
+        let response = await fetch(`https://opentdb.com/api.php?amount=10&type=multiple`);
+        let data = await response.json();
+        questions = [...data.results];
+        generateQuestion();
     }
 
-    // currentQuestion.choices.forEach((answer) => {
-    //     //creates a variable element called tempBtn that is a button
-    //     let tempBtn = document.createElement("button");
-    //     //makes the text content of button an answer from my object array
-    //     tempBtn.textContent = answer;
-    //     //sets tempBtn value to answer
-    //     tempBtn.setAttribute('value', answer);
-    //     //sets tempBtn class to 'button-choice'
-    //     tempBtn.setAttribute('class', 'button-choice');
-    //     //when tempBtn is clicked validateAnswer function is triggered
-    //     tempBtn.onclick = validateAnswer;
-    //     //appends each answer in the form of 'tempBtn' to my answer-zone
-    //     answerZoneEl.appendChild(tempBtn);
-    // });
-});
+    function generateQuestion() {
+        console.log(questionIndex, questions.length)
+
+     if (questionIndex === questions.length) {
+        endGame ();
+     }
+
+        answerZoneEl.empty();
+        rightWrongEl.empty();
+
+        let currentQuestion = questions[questionIndex];
+        correctAnswer = currentQuestion.correct_answer;
+        console.log(currentQuestion);
+
+        scoreEl.text(`Score: ${score}`);
+        questionEl.text(`Question: ${currentQuestion.question}`);
+        categoryEl.text(`Category: ${currentQuestion.category}`);
+
+        const questionChoices = [...currentQuestion.incorrect_answers, currentQuestion.correct_answer]
+        // shuffle array randomly\
+        const randomQuestionChoices = questionChoices.sort(() => Math.random() - 0.5);
+        console.log(randomQuestionChoices);
+        randomQuestionChoices.forEach(function (value) {
+            let tempBtn = $('<button>').text(value).val(value).addClass('hollow button').click(validateAnswer);
+            answerZoneEl.append(tempBtn);
+        })
+
+    }
+
+    function validateAnswer() {
+        const userChoice = $(this).val();
+        console.log(userChoice, correctAnswer);
+        if (userChoice === correctAnswer) {
+            score++;
+            rightWrongEl.text("RIGHT");
+        } else {
+            rightWrongEl.text("WRONG");
+        }
+        questionIndex++;
+        setTimeout(function () {
+            //calls sendApiRequest function
+            generateQuestion();
+        }, 1000)
+
+    }
+
+    function endGame () {
+        //stores score in localStorage
+        localStorage.setItem('mostRecentScore', score);
+        //send user to end-game.html page
+        return window.location.assign("./end-game.html");
+        
+
+    }
+    sendApiRequest();
+
+    //regex to remove weird text in questions
+})
