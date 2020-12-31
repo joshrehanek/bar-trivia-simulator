@@ -6,6 +6,7 @@ $(document).ready(function () {
     const questionEl = $("#question");
     const answerZoneEl = $("#answer-zone");
     const rightWrongEl = $("#right-wrong");
+    const questionNumberEl = $("#question-number");
 
     //initial variables
   
@@ -37,6 +38,7 @@ $(document).ready(function () {
         correctAnswer = currentQuestion.correct_answer;
         console.log(currentQuestion);
 
+        questionNumberEl.text(`Question: ${questionIndex + 1} / 10`)
         scoreEl.text(`Score: ${score}`);
         questionEl.text(`Question: ${currentQuestion.question}`);
         categoryEl.text(`Category: ${currentQuestion.category}`);
@@ -57,9 +59,9 @@ $(document).ready(function () {
         console.log(userChoice, correctAnswer);
         if (userChoice === correctAnswer) {
             score++;
-            rightWrongEl.text("RIGHT");
+            rightWrongEl.text(`RIGHT`);
         } else {
-            rightWrongEl.text("WRONG");
+            rightWrongEl.text(`WRONG: Answer is ${correctAnswer}`);
         }
         questionIndex++;
         setTimeout(function () {
