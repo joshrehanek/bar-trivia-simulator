@@ -6,19 +6,14 @@ const mostRecentScoreEl = localStorage.getItem('mostRecentScore');
 finalScoreEl.innerText = `Score: ${mostRecentScoreEl} points`;
 const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 
-// // listener event
-// usernameEl.keydown(function (){
-//     saveScoreBtnEl.disabled = !usernameEl.value;
-// });
-
 // function to save high score when event is triggered
 saveHighScore = e => {
     e.preventDefault();
 
 // score Object
     const score = {
-        score:mostRecentScoreEl,
-        name: usernameEl.value
+        score: mostRecentScoreEl,
+        name: usernameEl.val()
     };
 // pushes score to high score array
     highScores.push(score);
