@@ -27,20 +27,51 @@ $.ajax( {
 } );
 
 // this will be the secondary focus: but will be the search function under the drink cards and will display its results in the 'Highlighted Drink' card.
-const searchDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
+
+function classicDrinkButtons() {
+
+let drinkButton = $(this).attr("data-name");
+console.log(drinkButton);
+const searchDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drinkButton;
 
 $.ajax( {
     url: searchDrinkURL,
     method: "GET"
 } ).then( function ( response ) {
-
-    console.log( searchDrinkURL );
-
+   
     console.log( response );
 
+    let drinksDiv = $(".classic-drinks");
+    drinksDiv.empty();
+    let name = response.drinks[0].strDrink
+    let glass = response.drinks[0].strGlass
+    let instructions = response.drinks[0].strInstructions
+    let ingredients1 = response.drinks[0].strIngredient1
+    let ingredients2 = response.drinks[0].strIngredient2
+    let ingredients3 = response.drinks[0].strIngredient3
+    let ingredients4 = response.drinks[0].strIngredient4
+    if (ingredients4 === null){
+        ingredients4 = '';
+    }
+    let ingredients5 = response.drinks[0].strIngredient5
+    if (ingredients5 === null){
+        ingredients5 = '';
+    }
+    let ingredients6 = response.drinks[0].strIngredient6
+    if (ingredients6 === null){
+        ingredients6 = '';
+    }
+    console.log(name);
+    let drinkName= $("<p>").text(`Name: ${name}`);
+    let glassName= $("<p>").text(`Glass: ${glass}`);
+    let drinkInstructions = $("<p>").text(`Instructions: ${instructions}`);
+    let ingredients = $("<p>").text(`Ingredients: ${ingredients1} ${ingredients2} ${ingredients3} ${ingredients4} ${ingredients5} ${ingredients6}`);
 
-
+    drinksDiv.append(drinkName, glassName, drinkInstructions, ingredients);
 } );
+}
+
+$(document).on("click", ".drink", classicDrinkButtons);
 
 // const loadDrankz = async () => {
 //             try {
