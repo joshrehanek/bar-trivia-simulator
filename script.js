@@ -57,12 +57,11 @@ $.ajax( {
         ingredients6 = '';
     }
     console.log(name);
-    let drinkName= $("<p>").text(`Name: ${name}`);
     let glassName= $("<p>").text(`Glass: ${glass}`);
     let drinkInstructions = $("<p>").text(`Instructions: ${instructions}`);
     let ingredients = $("<p>").text(`Ingredients: ${ingredients1} ${ingredients2} ${ingredients3} ${ingredients4} ${ingredients5} ${ingredients6}`);
 
-    randomText.append(drinkName, glassName, drinkInstructions, ingredients);
+    randomText.append(glassName, drinkInstructions, ingredients);
 } );
 
 
@@ -80,6 +79,13 @@ $.ajax( {
 } ).then( function ( response ) {
    
     console.log( response );
+
+    // pulling the image from the ajax
+    var imgURL = response.drinks[0].strDrinkThumb
+// making an element for the img to append to
+    var image = $("<img>").attr("src", imgURL);
+// appending image
+    $('#classic-drink').append(image);
 
     let drinksDiv = $(".classic-drinks");
     drinksDiv.empty();
@@ -102,7 +108,7 @@ $.ajax( {
         ingredients6 = '';
     }
     console.log(name);
-    let drinkName= $("<p>").text(`Name: ${name}`);
+    let drinkName= $("#classic-drink-title").text(`Name: ${name}`);
     let glassName= $("<p>").text(`Glass: ${glass}`);
     let drinkInstructions = $("<p>").text(`Instructions: ${instructions}`);
     let ingredients = $("<p>").text(`Ingredients: ${ingredients1} ${ingredients2} ${ingredients3} ${ingredients4} ${ingredients5} ${ingredients6}`);
