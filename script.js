@@ -22,9 +22,49 @@ $.ajax( {
 
     console.log( response );
 
+// pulling the image from the ajax
+    var imgURL = response.drinks[0].strDrinkThumb
+// making an element for the img to append to
+    var image = $("<img>").attr("src", imgURL);
+// appending image
+    $('#randomdrinkimg').append(image);
+
+    let randomDrinkTitle = $('#randomdrinktitle');
+    var randomdrinkname = response.drinks[0].strDrink
+    var randomname = $("<p>").text(`Name:  ${randomdrinkname}`);
+    randomDrinkTitle.append(randomname)
+    console.log(randomdrinkname);
 
 
+    let randomText = $("#randomText");
+    randomText.empty();
+    let name = response.drinks[0].strDrink
+    let glass = response.drinks[0].strGlass
+    let instructions = response.drinks[0].strInstructions
+    let ingredients1 = response.drinks[0].strIngredient1
+    let ingredients2 = response.drinks[0].strIngredient2
+    let ingredients3 = response.drinks[0].strIngredient3
+    let ingredients4 = response.drinks[0].strIngredient4
+    if (ingredients4 === null){
+        ingredients4 = '';
+    }
+    let ingredients5 = response.drinks[0].strIngredient5
+    if (ingredients5 === null){
+        ingredients5 = '';
+    }
+    let ingredients6 = response.drinks[0].strIngredient6
+    if (ingredients6 === null){
+        ingredients6 = '';
+    }
+    console.log(name);
+    let drinkName= $("<p>").text(`Name: ${name}`);
+    let glassName= $("<p>").text(`Glass: ${glass}`);
+    let drinkInstructions = $("<p>").text(`Instructions: ${instructions}`);
+    let ingredients = $("<p>").text(`Ingredients: ${ingredients1} ${ingredients2} ${ingredients3} ${ingredients4} ${ingredients5} ${ingredients6}`);
+
+    randomText.append(drinkName, glassName, drinkInstructions, ingredients);
 } );
+
 
 // this will be the secondary focus: but will be the search function under the drink cards and will display its results in the 'Highlighted Drink' card.
 
