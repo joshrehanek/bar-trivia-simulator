@@ -27,11 +27,11 @@ $.ajax( {
 // making an element for the img to append to
     var image = $("<img>").attr("src", imgURL);
 // appending image
-    $('#randomdrinkimg').append(image);
+    // $('#randomdrinkimg').append(image);
 
     let randomDrinkTitle = $('#randomdrinktitle');
     var randomdrinkname = response.drinks[0].strDrink
-    var randomname = $("<p>").text(`Name:  ${randomdrinkname}`);
+    var randomname = $("<p>").text(`${randomdrinkname}`);
     randomDrinkTitle.append(randomname)
     console.log(randomdrinkname);
 
@@ -61,7 +61,7 @@ $.ajax( {
     let drinkInstructions = $("<p>").text(`Instructions: ${instructions}`);
     let ingredients = $("<p>").text(`Ingredients: ${ingredients1} ${ingredients2} ${ingredients3} ${ingredients4} ${ingredients5} ${ingredients6}`);
 
-    randomText.append(glassName, drinkInstructions, ingredients);
+    randomText.append(image, glassName, drinkInstructions, ingredients);
 } );
 
 
@@ -84,12 +84,15 @@ $.ajax( {
     var imgURL = response.drinks[0].strDrinkThumb
 // making an element for the img to append to
     var image = $("<img>").attr("src", imgURL);
-// appending image
-    $('#classic-drink').append(image);
+
+    let classicDrinkTitleEl = $('#classic-drink-title');
+    let name = response.drinks[0].strDrink
+    let classicDrinkTitle = $("<p>").text(`${name}`);
+    classicDrinkTitleEl.append(classicDrinkTitle)
 
     let drinksDiv = $(".classic-drinks");
     drinksDiv.empty();
-    let name = response.drinks[0].strDrink
+    
     let glass = response.drinks[0].strGlass
     let instructions = response.drinks[0].strInstructions
     let ingredients1 = response.drinks[0].strIngredient1
@@ -113,7 +116,7 @@ $.ajax( {
     let drinkInstructions = $("<p>").text(`Instructions: ${instructions}`);
     let ingredients = $("<p>").text(`Ingredients: ${ingredients1} ${ingredients2} ${ingredients3} ${ingredients4} ${ingredients5} ${ingredients6}`);
 
-    drinksDiv.append(drinkName, glassName, drinkInstructions, ingredients);
+    drinksDiv.append(image, glassName, drinkInstructions, ingredients);
 } );
 }
 
