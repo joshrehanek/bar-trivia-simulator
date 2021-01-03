@@ -9,77 +9,88 @@ $(document).ready(function () {
     const questionNumberEl = $("#question-number");
 
     //initial variables
-  
     let questions = [];
     let score = 0;
     let questionIndex = 0;
     let correctAnswer;
 
-    //Api requests
+    //Api request
     async function sendApiRequest() {
-        // possible toggle inputs to change api request for question type
+        // set response equal to response from url using fetch method
         let response = await fetch(`https://opentdb.com/api.php?amount=10&type=multiple`);
+        // Takes a Response stream and reads it to completion. It returns a promise that resolves with the result of parsing the body text as JSON, which is a JavaScript value of datatype object, string, etc. *** from MDN
         let data = await response.json();
+        //set questions equal to all returned data using the spread operator
         questions = [...data.results];
+        //call generateQuestion function
         generateQuestion();
     }
-
+    //this function generates new questions
     function generateQuestion() {
-        console.log(questionIndex, questions.length)
-
-     if (questionIndex === questions.length) {
-        endGame ();
-     }
-
+        //if statement to call endGame function once questions.length is reached
+        if (questionIndex === questions.length) {
+            endGame();
+        }
+        //emptys answer buttons
         answerZoneEl.empty();
+        //emptys right/wrong area
         rightWrongEl.empty();
 
+        //sets currentQuestion equal to questions index
         let currentQuestion = questions[questionIndex];
+        //set correctAnswer equal to the correct answer of the current question
         correctAnswer = currentQuestion.correct_answer;
-        console.log(currentQuestion);
-
+        //tells user what question number they are on
         questionNumberEl.text(`Question: ${questionIndex + 1} / 10`)
+        //tells user score
         scoreEl.text(`Score: ${score}`);
+        //shows user the current question
         questionEl.text(`Question: ${currentQuestion.question}`);
+        //shows user what category the current question is from
         categoryEl.text(`Category: ${currentQuestion.category}`);
-
+        //sets up array of all possible answer choices using the spread operator for incorrect answers
         const questionChoices = [...currentQuestion.incorrect_answers, currentQuestion.correct_answer]
-        // shuffle array randomly\
+        //shuffle array randomly
         const randomQuestionChoices = questionChoices.sort(() => Math.random() - 0.5);
-        console.log(randomQuestionChoices);
+        //creates a temporary btn for each of the choices and adds them to the answer zone; using jQuery adds text, value, class, & onclick event to each btn
         randomQuestionChoices.forEach(function (value) {
             let tempBtn = $('<button>').text(value).val(value).addClass('hollow button').click(validateAnswer);
             answerZoneEl.append(tempBtn);
         })
 
     }
-
+    //this fnction validates the users answer
     function validateAnswer() {
+        //set userChoice to the value of the btn the user clicked
         const userChoice = $(this).val();
-        console.log(userChoice, correctAnswer);
+        //if user chooses the correct answer the score goes up 1 and "RIGHT" appears in the right/wrong div
         if (userChoice === correctAnswer) {
             score++;
             rightWrongEl.text(`RIGHT`);
+            //if user is wrong "WRONG" apers in the right/wrong div along with the correct answer
         } else {
             rightWrongEl.text(`WRONG: Answer is ${correctAnswer}`);
         }
+        //question index increases by 1
         questionIndex++;
+        //setTimeout function to allow 1 second before generating a new question
         setTimeout(function () {
             //calls sendApiRequest function
             generateQuestion();
         }, 1000)
 
     }
-
-    function endGame () {
+    //this function is for when the game is over
+    function endGame() {
         //stores score in localStorage
         localStorage.setItem('mostRecentScore', score);
         //send user to end-game.html page
         return window.location.assign("./end-game.html");
-        
+
 
     }
+    //call ApiRequest() function
     sendApiRequest();
 
-    //regex to remove weird text in questions
+
 })
