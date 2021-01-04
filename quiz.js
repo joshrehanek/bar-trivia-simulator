@@ -33,7 +33,7 @@ $(document).ready(function () {
         questions = [...data.results];
         //call generateQuestion function
         generateQuestion();
-
+        console.log(questions)
     }
     //this function generates new questions
     function generateQuestion() {
@@ -50,6 +50,15 @@ $(document).ready(function () {
 
         cheer.pause();
         jeer.pause();
+        function fix (errorString){
+            while(errorString.includes("&#039;")){
+                errorString = errorString.replace("&#039;", "\'")
+                }
+            while(errorString.includes("&quot;")){
+                errorString = errorString.replace("&quot;","\"")
+                }
+                return errorString
+        }
         //sets currentQuestion equal to questions index
         let currentQuestion = questions[questionIndex];
         //set correctAnswer equal to the correct answer of the current question
@@ -58,14 +67,16 @@ $(document).ready(function () {
         questionNumberEl.text(`Question: ${questionIndex + 1} / 10`)
         //tells user score
         scoreEl.text(`Score: ${score}`);
-        //shows user the current question
-        questionEl.text(`Question: ${currentQuestion.question}`);
+        //shows user the current question after a fix
+        let fixedCurrentQuestion = fix(currentQuestion.question)
+        questionEl.text(`Question: ${fixedCurrentQuestion}`);
         //shows user what category the current question is from
         categoryEl.text(`Category: ${currentQuestion.category}`);
         //sets up array of all possible answer choices using the spread operator for incorrect answers
-        const questionChoices = [...currentQuestion.incorrect_answers, currentQuestion.correct_answer]
+        let questionChoices = [...currentQuestion.incorrect_answers, currentQuestion.correct_answer]
+        let fixedQuestionChoices = fix(questionChoices)
         //shuffle array randomly
-        const randomQuestionChoices = questionChoices.sort(() => Math.random() - 0.5);
+        const randomQuestionChoices = fixedQuestionChoices.sort(() => Math.random() - 0.5);
         //creates a temporary btn for each of the choices and adds them to the answer zone; using jQuery adds text, value, class, & onclick event to each btn
         randomQuestionChoices.forEach(function (value) {
             let tempBtn = $('<button>').text(value).val(value).addClass('hollow button answer').click(validateAnswer);
