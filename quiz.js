@@ -14,6 +14,15 @@ $(document).ready(function () {
     let questionIndex = 0;
     let correctAnswer;
 
+    //audio variables
+
+    //crowd cheer sound
+    const cheer = new Audio('./Assets/audio/bbc_crowds--ch_07043047.mp3');
+    //crow jeer sound
+    const jeer = new Audio("./Assets/audio/bbc_crowd-reac_07018034.mp3")
+    // MF DOOM backtrack
+    const DOOM = new Audio("./Assets/audio/Metal Fingers Special Herbs (Volume 1&2) [FULL ALBUM].mp3")
+
     //Api request
     async function sendApiRequest() {
         // set response equal to response from url using fetch method
@@ -24,18 +33,23 @@ $(document).ready(function () {
         questions = [...data.results];
         //call generateQuestion function
         generateQuestion();
+
     }
     //this function generates new questions
     function generateQuestion() {
+
         //if statement to call endGame function once questions.length is reached
         if (questionIndex === questions.length) {
             endGame();
         }
+
         //emptys answer buttons
         answerZoneEl.empty();
         //emptys right/wrong area
         rightWrongEl.empty();
 
+        cheer.pause();
+        jeer.pause();
         //sets currentQuestion equal to questions index
         let currentQuestion = questions[questionIndex];
         //set correctAnswer equal to the correct answer of the current question
@@ -63,13 +77,22 @@ $(document).ready(function () {
     function validateAnswer() {
         //set userChoice to the value of the btn the user clicked
         const userChoice = $(this).val();
+
         //if user chooses the correct answer the score goes up 1 and "RIGHT" appears in the right/wrong div
         if (userChoice === correctAnswer) {
             score++;
             rightWrongEl.text(`RIGHT`);
+            if (cheer.pause) {
+                cheer.currentTime = 0;
+                cheer.play();
+            }
             //if user is wrong "WRONG" apers in the right/wrong div along with the correct answer
         } else {
             rightWrongEl.text(`WRONG: Answer is ${correctAnswer}`);
+            if (jeer.pause) {
+                jeer.currentTime = 0;
+                jeer.play();
+            }
         }
         //question index increases by 1
         questionIndex++;
@@ -77,7 +100,8 @@ $(document).ready(function () {
         setTimeout(function () {
             //calls sendApiRequest function
             generateQuestion();
-        }, 1000)
+
+        }, 3000)
 
     }
     //this function is for when the game is over
@@ -89,6 +113,23 @@ $(document).ready(function () {
 
 
     }
+
+    //this on click event turns the jukebox on and off
+    $("#jukebox").click(function () {
+        DOOM.play();
+        if (DOOM.play) {
+            $("#jukebox").click(function (){
+                DOOM.pause();
+            })
+        } else if(DOOM.paused) {
+            $("#jukebox").click(function (){
+                DOOM.play();
+        })
+        }
+    });
+
+
+
     //call ApiRequest() function
     sendApiRequest();
 
