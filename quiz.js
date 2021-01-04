@@ -68,7 +68,7 @@ $(document).ready(function () {
         const randomQuestionChoices = questionChoices.sort(() => Math.random() - 0.5);
         //creates a temporary btn for each of the choices and adds them to the answer zone; using jQuery adds text, value, class, & onclick event to each btn
         randomQuestionChoices.forEach(function (value) {
-            let tempBtn = $('<button>').text(value).val(value).addClass('hollow button').click(validateAnswer);
+            let tempBtn = $('<button>').text(value).val(value).addClass('hollow button answer').click(validateAnswer);
             answerZoneEl.append(tempBtn);
         })
 
@@ -77,7 +77,7 @@ $(document).ready(function () {
     function validateAnswer() {
         //set userChoice to the value of the btn the user clicked
         const userChoice = $(this).val();
-
+        $(".answer").attr("disabled", true)
         //if user chooses the correct answer the score goes up 1 and "RIGHT" appears in the right/wrong div
         if (userChoice === correctAnswer) {
             score++;
