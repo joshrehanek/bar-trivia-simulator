@@ -57,6 +57,12 @@ $(document).ready(function () {
             while(errorString.includes("&quot;")){
                 errorString = errorString.replace("&quot;","\"")
                 }
+            while(errorString.includes("&amp;")){
+                errorString = errorString.replace("&amp;","&")
+            }
+            while(errorString.includes("&Uuml;")){
+                errorString = errorString.replace("&Uuml;","Ü")
+            }    
                 return errorString
         }
         //sets currentQuestion equal to questions index
