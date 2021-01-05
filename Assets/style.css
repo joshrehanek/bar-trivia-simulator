@@ -57,12 +57,18 @@ form {
 h1 {
     font-weight: bold;
     font-family: 'Montserrat Subrayada', sans-serif;
+    text-align: center;
   }
   
+h2, h4, ol li, p, .button, .warning, .navbarBtn {
+    font-family: 'Lexend Giga', sans-serif;
+  }
+  
+.navbarBtn {  
+    color: white;
+  }
+
 p {
-    font-family: 'Lexend Giga', sans-serif;
-  }
-  
-ol li {
-    font-family: 'Lexend Giga', sans-serif;
-  }
+    text-align:center;
+}
+    
