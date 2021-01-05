@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- JQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Compressed CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
+        integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <!-- Compressed JavaScript -->
+    <script defer src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
+        integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- <link rel = "stylesheet" href= "./assets/css/highscores.css"> -->
+    <title>High Scores</title>
+</head>
+
+<body>
+    <div data-sticky-container>
+        <div class="title-bar" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="1"
+            data-btm-anchor="content:bottom">
+            <div class="title-bar-left">
+            </div>
+            <div class="title-bar-right">
+                <!-- Content -->
+                <ul class="menu">
+                    <li><a href="index.html">Home Page</a></li>
+                    <li><a href="end-game.html">About Us</a></li>
+                    <li><a href="high-scores.html">Leaderboard</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="scores" class="cell medium-6">
+            <h1 id="finalScore">High Scores</h1>
+            <ul id="highScoresList"></ul>
+        </div>
+        <a class="hollow button warning" href="./quiz.html">Play Bar Trivia Again</a>
+        <a class="hollow button warning" href="./index.html">Head Back to the Bar</a>
+    </div>
+    <script src="./high-scores.js"></script>
+</body>
+
+</html>
