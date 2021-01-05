@@ -53,3 +53,16 @@ form {
     color: #0a0a0a;
     background-color: #e79e4f;
 }
+
+h1 {
+    font-weight: bold;
+    font-family: 'Montserrat Subrayada', sans-serif;
+  }
+  
+p {
+    font-family: 'Lexend Giga', sans-serif;
+  }
+  
+ol li {
+    font-family: 'Lexend Giga', sans-serif;
+  }
