@@ -24,5 +24,5 @@ saveHighScore = e => {
 // updates highscores in local storage
     localStorage.setItem('highScores',JSON.stringify(highScores));
 // send user to highscores page after save button is clicked
-    return window.location.assign("./index.html");
+    return window.location.assign("./high-scores.html");
 };
