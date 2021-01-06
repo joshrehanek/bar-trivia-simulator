@@ -17,8 +17,14 @@
   <!-- Compressed CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
     integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+  <!-- flipFLopStrap CSS -->
   <link rel="stylesheet" href="./Assets/style.css">
-  <!-- Google Font -->
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Smokum&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+  ---
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap" rel="stylesheet">
   <!-- Google Font -->
@@ -29,6 +35,9 @@
 </head>
 
 <body>
+
+  <section>
+    <header>
   <!-- Sticky NavBar -->
   <div data-sticky-container>
     <div class="title-bar" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="1"
@@ -69,43 +78,77 @@
       <div class="cell">
         <a class="button expanded clear button success" href="./quiz.html">Start Bar Trivia</a>
       </div>
-    </div>
-    <br>
-    <div class="grid-x">
-      <div class="cell large-auto">
-        <div class="button-group expanded">
-          <a class="warning button hollow drink" data-name="Martini">Martini</a>
-          <a class="warning button hollow drink" data-name="Highball">Highball</a>
-          <a class="warning button hollow drink" data-name="Sazerac">Sazerac</a>
-          <a class="warning button hollow drink" data-name="Mojito">Mojito</a>
-          <a class="warning button hollow drink" data-name="Margarita">Margarita</a>
+    </header>
+      </section>
+    <article>
+      <div class="grid-container fluid">
+        <div class="grid-x align-center">
+          <div class="cell medium-8 align-self-middle">
+            <h1 class="title">Getcha Fix Virtual Bar Trivia</h1>
+            <p class="welcome">
+              Welcome! Getcha Fix Virtual Bar Trivia will bring the bar to the comfort of your own home!<br>
+              There will be 10 questions from every category across the board<br>
+              (General Knowledge, Entertainment, Math, Science, Anime, Art, Mythology, etc.) <br>
+              Rules are simple:
+            <ol>
+              <li>Make a drink (Not sure what to make? Get inspired by our Drink of the Moment or click on the list
+                of<br>
+                Classic Drinks below)</li>
+              <li>Sit back and take a hit</li>
+              <li>Hit the 'Start Bar Trivia' Button</li>
+              <li>Test your knowledge (TIP: Jam out to some MF DOOM by hitting the Jukebox in the top left corner)</li>
+            </ol>
+            </p>
+            <p>Good luck and Have fun!</p>
+          </div>
+        </div>
+        <br>
+        <div class="cell large-auto">
+          <div class="button-group expanded">
+            <a class="warning button hollow" href="./quiz.html">Start Bar Trivia</a>
+          </div>
+        </div>
+    </article>
+    <article>
+      <div class="grid-x">
+        <div class="cell large-auto">
+          <div class="button-group expanded">
+            <a class="warning button hollow" data-name="Martini">Martini</a>
+            <a class="warning button hollow" data-name="Highball">Highball</a>
+            <a class="warning button hollow" data-name="Sazerac">Sazerac</a>
+            <a class="warning button hollow" data-name="Mojito">Mojito</a>
+            <a class="warning button hollow" data-name="Margarita">Margarita</a>
+          </div>
         </div>
       </div>
-    </div>
+    </article>
+  </section>
+  <article>
     <div class="grid-x">
       <!-- CARD ONE -->
-      <div class="card" style="width: 100px;">
+      <div class="card">
         <div class="card-divider">
-          <h2>Drink of the Moment</h2>
+          <h2 class="drankTitil">Drink of the Moment</h2>
         </div>
         <div class="card-section">
-          <h4 id ="randomdrinktitle"></h4>
-          <p id="randomText"></p>
+          <h4 class="drankTitil" id="randomdrinktitle"></h4>
+          <p class="img" id="randomText"></p>
         </div>
       </div>
       <!-- CARD TWO -->
-      <div class="card" style="width: 100px;">
+      <div class="card">
         <div class="card-divider">
-          <h2>Classic Drink</h2>
+          <h2 class="drankTitil">Classic Drink</h2>
         </div>
         <div class="card-section">
-          <h4 id="classic-drink-title">Choose a drink above.</h4>
+          <h4 class="drankTitil" id="classic-drink-title">Choose a drink above.</h4>
           <p class="classic-drinks"></p>
         </div>
       </div>
     </div>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </article>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+
   <script src="./script.js"></script>
 
 </body>
