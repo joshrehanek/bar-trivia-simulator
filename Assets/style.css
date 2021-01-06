@@ -3,21 +3,13 @@ section {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
 }
-
 .medium-8 {
     background-color: rgb(153, 170, 187, 0.7);
     font-size: xx-large;
     font-family: 'Smokum', 'cursive';
     text-align: center;
-
 }
-
-$button-color {
-    
-}
-
 .button {
     font-size: 7.0rem;
     /* padding: 1rem 0;
@@ -27,71 +19,58 @@ $button-color {
     margin-bottom: 1rem;
     color: #333; */
 }
-
 .expanded {
     background-color: rgb(153, 170, 187, .7)
 }
-
 .button:hover {
     cursor: pointer;
     box-shadow: 0 0.4rem 1.4rem 0 #333;
     transform: translateY(-0.1);
     transition: transform 150ms;
 }
-
 form {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .button.clear.success {
     color: #0a0a0a;
     background-color: #e79e4f;
 }
-
 /* boarder for img, text is a package deal unfortunatly b/c of library */
 .card>.card-section>.img>img {
     border: 24px outset #A48914;
     border-radius: 26px;
     size: 7rem;
 }
-
-.card>.card-section>.classic-drinks {
+.card>.card-section>.classic-drinks>img {
     border: 24px outset #A48914;
     border-radius: 26px;
 }
-
 /* "      END      " */
-
 /* uniform title for drinks*/
 .drankTitil {
     font-family: 'Rye', 'cursive';
 }
-
 /* "      END      " */
-
 .card {
     background-color: transparent;
     width: 10rem;
     height: min-content;
     text-align: center;
-
-
 }
-
 .card-divider {
     font-family: 'Rye', 'cursive';
     background: #e79e4f;
     text-align: center;
 }
-
 .card-section {
     font-family: 'Rye', 'cursive';
     text-align: center;
+    color: white;
+    background-color: black;
 }
-
 .navbarBtn {
     color: white;
 }
