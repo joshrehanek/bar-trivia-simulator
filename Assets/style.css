@@ -1,25 +1,35 @@
-body {
-    background-color: #a05344;
-    font-size: 100%;
+section {
+    background-image: url("./images/barBackground.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 
-*{
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #222;
+.medium-8 {
+    background-color: rgb(153, 170, 187, 0.7);
+    font-size: xx-large;
+    font-family: 'Smokum', 'cursive';
+    text-align: center;
+
+}
+
+$button-color {
+    
 }
 
 .button {
-    font-size: 2.0rem;
-    padding: 1rem 0;
+    font-size: 7.0rem;
+    /* padding: 1rem 0;
     width: 20rem;
     text-align: center;
     border: 1px solid #1779ba;
     margin-bottom: 1rem;
-    color: #333;
-    background-color:transparent;
+    color: #333; */
+}
+
+.expanded {
+    background-color: rgb(153, 170, 187, .7)
 }
 
 .button:hover {
@@ -35,40 +45,53 @@ form {
     flex-direction: column;
     align-items: center;
 }
-.card-section{
-    background-color: #734046
-}
 
-.button.clear.success{
+.button.clear.success {
     color: #0a0a0a;
     background-color: #e79e4f;
 }
 
-.card-divider{
-    background: #e79e4f;
+/* boarder for img, text is a package deal unfortunatly b/c of library */
+.card>.card-section>.img>img {
+    border: 24px outset #A48914;
+    border-radius: 26px;
+    size: 7rem;
 }
 
-.button.hollow.warning{
-    border: 1px solid #0a0a0a;
-    color: #0a0a0a;
-    background-color: #e79e4f;
+.card>.card-section>.classic-drinks {
+    border: 24px outset #A48914;
+    border-radius: 26px;
 }
 
-h1 {
-    font-weight: bold;
-    font-family: 'Montserrat Subrayada', sans-serif;
+/* "      END      " */
+
+/* uniform title for drinks*/
+.drankTitil {
+    font-family: 'Rye', 'cursive';
+}
+
+/* "      END      " */
+
+.card {
+    background-color: transparent;
+    width: 10rem;
+    height: min-content;
     text-align: center;
-  }
-  
-h2, h4, ol li, p, .button, .warning, .navbarBtn {
-    font-family: 'Lexend Giga', sans-serif;
-  }
-  
-.navbarBtn {  
-    color: white;
-  }
 
-p {
-    text-align:center;
+
 }
-    
+
+.card-divider {
+    font-family: 'Rye', 'cursive';
+    background: #e79e4f;
+    text-align: center;
+}
+
+.card-section {
+    font-family: 'Rye', 'cursive';
+    text-align: center;
+}
+
+.navbarBtn {
+    color: white;
+}
