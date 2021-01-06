@@ -9,7 +9,7 @@
 - [Home Page](#home-page)
 - [Question 1](#question-1)
 - [Question 2](#question-2)
-- [End Game Page](#end-game-page)
+- [End Game Page](#about-us-page)
 - [About Us Page](#about-us-page)
 - [Leaderboard Page](#leaderboard-page)
 - [Technologies](#technologies)
@@ -42,15 +42,23 @@ The bar trivia simulator meets the following criteria:
 
 ## Home Page
 
+![image](https://user-images.githubusercontent.com/71292617/103726686-66962b80-4f8e-11eb-90d8-74c5c2bf9f1c.png)
+
 ## Question 1
+
+![image](https://user-images.githubusercontent.com/71292617/103727620-947c6f80-4f90-11eb-9dd6-42f40d0328c3.png)
 
 ## Question 2
 
-## End Game Page
+![image](https://user-images.githubusercontent.com/71292617/103727506-47989900-4f90-11eb-922e-6021aa01dde5.png)
 
 ## About Us Page
 
+![image](https://user-images.githubusercontent.com/71292617/103727710-c7befe80-4f90-11eb-802f-bbc4ce2cd859.png)
+
 ## Leaderboard Page
+
+![image](https://user-images.githubusercontent.com/71292617/103728929-1b7f1700-4f94-11eb-97ea-97fe74a38af5.png)
 
 ## Technologies
 
