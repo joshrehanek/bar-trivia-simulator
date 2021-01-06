@@ -4,37 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- JQuery CDN -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="./Assets/images/favicon.png" />
+    <!-- JQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Compressed CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
         integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap" rel="stylesheet">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga&family=Snippet&display=swap" rel="stylesheet">
     <!-- Compressed JavaScript -->
     <script defer src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
         integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
-    
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- JS link -->
+    <script defer src="./end-game.js"></script>
     <title>Bar Trivia Quiz</title>
 </head>
 
 <body>
     <div data-sticky-container>
         <div class="title-bar" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="1"
-          data-btm-anchor="content:bottom">
-          <div class="title-bar-left">
-          </div>
-          <div class="title-bar-right">
-            <!-- Content -->
-            <ul class="menu">
-              <li><a href="index.html">Home Page</a></li>
-              <li><a href="end-game.html">About Us</a></li>
-              <li><a href="high-scores.html">Leaderboard</a></li>
-            </ul>
-          </div>
+            data-btm-anchor="content:bottom">
+            <div class="title-bar-left">
+            </div>
+            <div class="title-bar-right">
+                <ul class="menu">
+                    <li><a href="index.html">Home Page</a></li>
+                    <li><a href="end-game.html">About Us</a></li>
+                    <li><a href="high-scores.html">Leaderboard</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
+    </div>
     <div class="container">
-        <div id="end" >
+        <div id="end">
             <h1 id="finalScore"></h1>
             <form>
                 <input type="text" name="username" id="username" placeholder="username" />
@@ -46,28 +55,27 @@
     </div>
     <div id="about-us">
         <h3>Creators:</h3>
-            <li>Joshua Rehanek</li>
-            <li>Mason Miyamoto</li>
-            <li>Chris Hoffman</li>
-            <li>Rheanne Reyes</li>
+        <li>Joshua Rehanek</li>
+        <li>Mason Miyamoto</li>
+        <li>Chris Hoffman</li>
+        <li>Rheanne Reyes</li>
         <br>
 
         <h3>Frameworks Used:</h3>
-            <li>Foundation</li>
+        <li>Foundation</li>
         <br>
 
         <h3>API’s Used:</h3>
-            <li>TheCocktailDB</li>
-	        <a href="https://www.thecocktaildb.com/api/json/v1/1/search.php?s=">API: Drinks with Ingredients & Instructions on how to make</a><br>
-	        <a href="https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list">API: Drink categories</a><br>
-            <p>TheCocktailDB API is used to display the randomized Drink of the Moment, the selection of drinks for the 
-            user to choose from in order to display the Highlighted Classic Drink, and the personalized drink at the end of the trivia for the user.</p>
-            <li>OpenTrivia Database</li>
-	        <a href="https://opentdb.com/api_config.php">API: Trivia Questions</a><br>
-            <p>The Open Trivia API is used to run the 10 bar trivia questions for the user.</p>
+        <li>TheCocktailDB</li>
+        <a href="https://www.thecocktaildb.com/api/json/v1/1/search.php?s=">API: Drinks with Ingredients & Instructions
+            on how to make</a><br>
+        <a href="https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list">API: Drink categories</a><br>
+        <p>TheCocktailDB API is used to display the randomized Drink of the Moment and the selection of drinks for the
+            user to choose from in order to display the Highlighted Classic Drink.</p>
+        <li>OpenTrivia Database</li>
+        <a href="https://opentdb.com/api_config.php">API: Trivia Questions</a><br>
+        <p>The Open Trivia API is used to run the 10 bar trivia questions for the user.</p>
     </div>
-    <script src="./end-game.js"></script>
 </body>
 
 </html>
-
