@@ -40,6 +40,8 @@ The bar trivia simulator meets the following criteria:
 
 ## Link to Deployed Page
 
+https://joshrehanek.github.io/bar-trivia-simulator/
+
 ## Home Page
 
 ![image](https://user-images.githubusercontent.com/71292617/103726686-66962b80-4f8e-11eb-90d8-74c5c2bf9f1c.png)
