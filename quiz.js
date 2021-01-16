@@ -1,26 +1,25 @@
 $(document).ready(function () {
     //DOM Variables
-    const scoreEl = $("#score")
-    const categoryEl = $("#category");
-    const questionEl = $("#question");
-    const answerZoneEl = $("#answer-zone");
-    const rightWrongEl = $("#right-wrong");
+    const scoreEl          = $("#score")
+    const categoryEl       = $("#category");
+    const questionEl       = $("#question");
+    const answerZoneEl     = $("#answer-zone");
+    const rightWrongEl     = $("#right-wrong");
     const questionNumberEl = $("#question-number");
 
     //initial variables
-    let questions = [];
-    let score = 0;
+    let questions     = [];
+    let score         = 0;
     let questionIndex = 0;
     let correctAnswer;
 
     //audio variables
-
-    //crowd cheer sound
     const cheer = new Audio('./Assets/audio/bbc_crowds--ch_07043047.mp3');
-    //crow jeer sound
-    const jeer = new Audio("./Assets/audio/bbc_crowd-reac_07018034.mp3")
-    // MF DOOM backtrack
-    const DOOM = new Audio("./Assets/audio/Metal Fingers Special Herbs (Volume 1&2) [FULL ALBUM].mp3")
+    const jeer  = new Audio("./Assets/audio/bbc_crowd-reac_07018034.mp3")
+    const DOOM  = new Audio("./Assets/audio/Metal Fingers Special Herbs (Volume 1&2) [FULL ALBUM].mp3")
+
+    //call ApiRequest() function to start 
+    sendApiRequest();
 
     //Api request
     async function sendApiRequest() {
@@ -28,101 +27,106 @@ $(document).ready(function () {
         let response = await fetch(`https://opentdb.com/api.php?amount=10&type=multiple`);
         // Takes a Response stream and reads it to completion. It returns a promise that resolves with the result of parsing the body text as JSON, which is a JavaScript value of datatype object, string, etc. *** from MDN
         let data = await response.json();
-        console.log(data);
-        //set questions equal to all returned data using the spread operator
         questions = [...data.results];
-        //call generateQuestion function
         generateQuestion();
-        console.log(questions)
     }
-    //this function generates new questions
-    function generateQuestion() {
 
-        //if statement to call endGame function once questions.length is reached
+    //this function generates the next question
+    function generateQuestion() {
+        //If we've gone through all the questions, end the game
         if (questionIndex === questions.length) {
             endGame();
         }
 
-        //emptys answer buttons
-        answerZoneEl.empty();
-        //emptys right/wrong area
-        rightWrongEl.empty();
-
-        cheer.pause();
-        jeer.pause();
+        resetQuestionZone();        
         
-        //sets currentQuestion equal to questions index
         let currentQuestion = questions[questionIndex];
-        //set correctAnswer equal to the correct answer of the current question
-        correctAnswer = currentQuestion.correct_answer;
-        //tells user what question number they are on
+        correctAnswer       = fix(currentQuestion.correct_answer);
+
         questionNumberEl.text(`Question: ${questionIndex + 1} / 10`)
-        //tells user score
-        scoreEl.text(`Score: ${score}`);
-        //shows user the current question after a fix
-        let fixedCurrentQuestion = fix(currentQuestion.question)
-        questionEl.text(`Question: ${fixedCurrentQuestion}`);
-        //shows user what category the current question is from
-        categoryEl.text(`Category: ${currentQuestion.category}`);
-        //sets up array of all possible answer choices using the spread operator for incorrect answers
-        console.log(currentQuestion.incorrect_answers)
-        for (var i = 0; i < 2; i++) {
-            currentQuestion.incorrect_answers[i] = fix(currentQuestion.incorrect_answers[i]);
-          }
-        // let fixedIncorrectAnswers = fix(currentQuestion.incorrect_answers)
-        let fixedCorrectAnswer = fix(currentQuestion.correct_answer)
-        let questionChoices = [...currentQuestion.incorrect_answers, fixedCorrectAnswer]
-        //shuffle array randomly
-        let randomQuestionChoices = questionChoices.sort(() => Math.random() - 0.5);
-        //creates a temporary btn for each of the choices and adds them to the answer zone; using jQuery adds text, value, class, & onclick event to each btn
-        randomQuestionChoices.forEach(function (value) {
-            let tempBtn = $('<button>').text(value).val(value).addClass('hollow button answer').click(validateAnswer);
-            answerZoneEl.append(tempBtn);
+        scoreEl         .text(`Score: ${score}`);
+        questionEl      .text(`Question: ${fix(currentQuestion.question)}`);
+        categoryEl      .text(`Category: ${currentQuestion.category}`);
+
+        let allBtns = createAnswerButtons(currentQuestion)
+            .sort(() => Math.random() -.5);
+            
+        allBtns.forEach(function(btn) {
+            answerZoneEl.append(btn);
+        })
+    }
+
+    function createAnswerButtons(question) {
+        let buttons = []
+        question.incorrect_answers.forEach(function (value) {
+            let tempBtn = $('<button>')
+                .text(fix(value))
+                .val(fix(value))
+                .addClass('hollow button answer')
+                .click(() => validateAnswer(false));
+                buttons.push(tempBtn);
         })
 
+        let correctBtn = $('<button>')
+            .text(question.correct_answer)
+            .val(question.correct_answer)
+            .addClass('hollow button answer')
+            .click(() => validateAnswer(true));
+        buttons.push(correctBtn);
+        return buttons;
     }
-    //this fnction validates the users answer
-    function validateAnswer() {
-        //set userChoice to the value of the btn the user clicked
-        const userChoice = $(this).val();
-        $(".answer").attr("disabled", true)
-        //if user chooses the correct answer the score goes up 1 and "RIGHT" appears in the right/wrong div
-        if (userChoice === correctAnswer) {
-            score++;
-            rightWrongEl.text(`RIGHT`);
-            if (cheer.pause) {
-                cheer.currentTime = 0;
-                cheer.play();
-            }
-            //if user is wrong "WRONG" apers in the right/wrong div along with the correct answer
-        } else {
-            rightWrongEl.text(`WRONG: Answer is ${correctAnswer}`);
-            if (jeer.pause) {
-                jeer.currentTime = 0;
-                jeer.play();
-            }
+
+    function correctAnswerClicked() {
+        score++;
+        rightWrongEl.text(`RIGHT`);
+        if (cheer.pause) {
+            cheer.currentTime = 0;
+            cheer.play();
         }
-        //question index increases by 1
+    }
+
+    function inCorrectAnswerClicked() {
+        rightWrongEl.text(`WRONG: Answer is ${correctAnswer}`);
+        if (jeer.pause) {
+            jeer.currentTime = 0;
+            jeer.play();
+        }
+    } 
+
+    //this function validates the users answer
+    function validateAnswer(isCorrect) {
+        $(".answer").attr("disabled", true)
+
+        if (isCorrect) { 
+            correctAnswerClicked(); 
+        } else {
+            inCorrectAnswerClicked();
+        }
+
         questionIndex++;
-        //setTimeout function to allow 1 second before generating a new question
-        setTimeout(function () {
-            //calls sendApiRequest function
-            generateQuestion();
-
-        }, 3000)
-
+        setTimeout(generateQuestion, 3000)
     }
-    //this function is for when the game is over
+
+    function fix(str) {
+        var txt = document.createElement("textarea");
+        txt.innerHTML = str;
+        return txt.value;
+    }
+
+    function resetQuestionZone() {
+        answerZoneEl.empty();
+        rightWrongEl.empty();
+        cheer.pause();
+        jeer .pause();
+        cheer.currentTime = 0;
+        jeer .currentTime = 0;
+    }
+
     function endGame() {
-        //stores score in localStorage
         localStorage.setItem('mostRecentScore', score);
-        //send user to end-game.html page
         return window.location.assign("./end-game.html");
-
-
     }
 
-    //this on click event turns the jukebox on and off
     $("#jukebox").click(function () {
         if(DOOM.paused) {
             DOOM.play();
@@ -130,13 +134,4 @@ $(document).ready(function () {
             DOOM.pause();
         }
     });
-
-    //call ApiRequest() function
-    sendApiRequest();
-
-    function fix(html) {
-        var txt = document.createElement("textarea");
-        txt.innerHTML = html;
-        return txt.value;
-    }
 })
