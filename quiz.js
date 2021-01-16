@@ -18,6 +18,8 @@ $(document).ready(function () {
     const jeer  = new Audio("./Assets/audio/bbc_crowd-reac_07018034.mp3")
     const DOOM  = new Audio("./Assets/audio/Metal Fingers Special Herbs (Volume 1&2) [FULL ALBUM].mp3")
 
+    // console.log(fix("It&#039;s a Wonderful Life"));
+
     //call ApiRequest() function to start 
     sendApiRequest();
 
@@ -50,7 +52,7 @@ $(document).ready(function () {
 
         let allBtns = createAnswerButtons(currentQuestion)
             .sort(() => Math.random() -.5);
-            
+
         allBtns.forEach(function(btn) {
             answerZoneEl.append(btn);
         })
@@ -68,8 +70,8 @@ $(document).ready(function () {
         })
 
         let correctBtn = $('<button>')
-            .text(question.correct_answer)
-            .val(question.correct_answer)
+            .text(correctAnswer)
+            .val(correctAnswer)
             .addClass('hollow button answer')
             .click(() => validateAnswer(true));
         buttons.push(correctBtn);
@@ -110,6 +112,7 @@ $(document).ready(function () {
     function fix(str) {
         var txt = document.createElement("textarea");
         txt.innerHTML = str;
+        console.log(txt.value);
         return txt.value;
     }
 
