@@ -24,7 +24,7 @@ $(document).ready(function () {
     //Api request
     async function sendApiRequest() {
         // set response equal to response from url using fetch method
-        let response = await fetch(`https://opentdb.com/api.php?amount=10&type=multiple`);
+        let response = await fetch(`https://opentdb.com/api.php?amount=11&type=multiple`);
         // Takes a Response stream and reads it to completion. It returns a promise that resolves with the result of parsing the body text as JSON, which is a JavaScript value of datatype object, string, etc. *** from MDN
         let data = await response.json();
         questions = [...data.results];
@@ -43,7 +43,7 @@ $(document).ready(function () {
         let currentQuestion = questions[questionIndex];
         correctAnswer       = fix(currentQuestion.correct_answer);
 
-        questionNumberEl.text(`Question: ${questionIndex + 1} / 10`)
+        questionNumberEl.text(`Question: ${questionIndex + 1} / ${questions.length}`)
         scoreEl         .text(`Score: ${score}`);
         questionEl      .text(`Question: ${fix(currentQuestion.question)}`);
         categoryEl      .text(`Category: ${currentQuestion.category}`);
