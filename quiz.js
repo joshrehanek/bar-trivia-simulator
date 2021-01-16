@@ -18,8 +18,6 @@ $(document).ready(function () {
     const jeer  = new Audio("./Assets/audio/bbc_crowd-reac_07018034.mp3")
     const DOOM  = new Audio("./Assets/audio/Metal Fingers Special Herbs (Volume 1&2) [FULL ALBUM].mp3")
 
-    // console.log(fix("It&#039;s a Wonderful Life"));
-
     //call ApiRequest() function to start 
     sendApiRequest();
 
@@ -112,7 +110,6 @@ $(document).ready(function () {
     function fix(str) {
         var txt = document.createElement("textarea");
         txt.innerHTML = str;
-        console.log(txt.value);
         return txt.value;
     }
 
