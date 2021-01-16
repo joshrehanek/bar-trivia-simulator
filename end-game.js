@@ -1,7 +1,7 @@
 // variables
 const usernameEl = $('#username');
 const saveScoreBtnEl = $('#saveScoreBtn');
-const finalScoreEl = $('#finalScore');
+const finalScoreEl = $('#finalScore')[0];
 const mostRecentScoreEl = localStorage.getItem('mostRecentScore');
 finalScoreEl.innerText = `Score: ${mostRecentScoreEl} points`;
 const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
