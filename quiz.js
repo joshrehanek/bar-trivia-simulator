@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     //DOM Variables
     const scoreEl = $("#score")
     const categoryEl = $("#category");
@@ -29,6 +28,7 @@ $(document).ready(function () {
         let response = await fetch(`https://opentdb.com/api.php?amount=10&type=multiple`);
         // Takes a Response stream and reads it to completion. It returns a promise that resolves with the result of parsing the body text as JSON, which is a JavaScript value of datatype object, string, etc. *** from MDN
         let data = await response.json();
+        console.log(data);
         //set questions equal to all returned data using the spread operator
         questions = [...data.results];
         //call generateQuestion function
@@ -50,30 +50,7 @@ $(document).ready(function () {
 
         cheer.pause();
         jeer.pause();
-        function fix (errorString){
-            if(errorString.includes("&#039;")){
-                console.log("its in there")
-            }
-            else {(errorString.includes("&#039;"))
-                    console.log("its not there")
-            }
-            while(errorString.includes("&#039;")){
-                errorString = errorString.replace("&#039;", "\'")
-                }
-            while(errorString.includes("&quot;")){
-                errorString = errorString.replace("&quot;","\"")
-                }
-            while(errorString.includes("&amp;")){
-                errorString = errorString.replace("&amp;","&")
-            }
-            while(errorString.includes("&Uuml;")){
-                errorString = errorString.replace("&Uuml;","Ü")
-            }    
-            while(errorString.includes("&eacute;")){
-                errorString = errorString.replace("&eacute;","é")
-            }        
-            return errorString
-        }
+        
         //sets currentQuestion equal to questions index
         let currentQuestion = questions[questionIndex];
         //set correctAnswer equal to the correct answer of the current question
@@ -147,22 +124,19 @@ $(document).ready(function () {
 
     //this on click event turns the jukebox on and off
     $("#jukebox").click(function () {
-        DOOM.play();
-        if (DOOM.play) {
-            $("#jukebox").click(function (){
-                DOOM.pause();
-            })
-        } else if(DOOM.paused) {
-            $("#jukebox").click(function (){
-                DOOM.play();
-        })
+        if(DOOM.paused) {
+            DOOM.play();
+        } else {
+            DOOM.pause();
         }
     });
-
-
 
     //call ApiRequest() function
     sendApiRequest();
 
-
+    function fix(html) {
+        var txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    }
 })
