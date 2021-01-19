@@ -26,7 +26,7 @@ $(document).ready(function () {
     //Api request
     async function sendApiRequest() {
         // set response equal to response from url using fetch method
-        let response = await fetch(`https://opentdb.com/api.php?amount=10&type=multiple`);
+        let response = await fetch(`https://opentdb.com/api.php?amount=1&type=multiple`);
         // Takes a Response stream and reads it to completion. It returns a promise that resolves with the result of parsing the body text as JSON, which is a JavaScript value of datatype object, string, etc. *** from MDN
         let data = await response.json();
         //set questions equal to all returned data using the spread operator

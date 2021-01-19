@@ -1,18 +1,17 @@
 // variables
 const usernameEl = $('#username');
-const saveScoreBtnEl = $('#saveScoreBtn');
 const finalScoreEl = $('#finalScore')[0];
-const mostRecentScoreEl = localStorage.getItem('mostRecentScore');
-finalScoreEl.innerText = `Score: ${mostRecentScoreEl} points`;
+const mostRecentScore = localStorage.getItem('mostRecentScore');
+finalScoreEl.innerText = `Score: ${mostRecentScore} points`;
 const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 
 // function to save high score when event is triggered
 saveHighScore = e => {
-    e.preventDefault();
+    // e.preventDefault();
 
 // score Object
     const score = {
-        score: mostRecentScoreEl,
+        score: mostRecentScore,
         name: usernameEl.val()
     };
 // pushes score to high score array
@@ -22,7 +21,7 @@ saveHighScore = e => {
 // saves top 10 high scores
     highScores.splice(10);
 // updates highscores in local storage
-    localStorage.setItem('highScores',JSON.stringify(highScores));
+    localStorage.setItem('highScores', JSON.stringify(highScores));
 // send user to highscores page after save button is clicked
     return window.location.assign("./high-scores.html");
 };
