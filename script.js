@@ -5,19 +5,12 @@ $(document).ready(function () {
 
     function randomDrink() {
         // this random url will be used as the 'Drink of the Hour' card.
-        const randomDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+        const randomDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php?a=Alcoholic"
         // ajax call for randomDrinkURL
         $.ajax({
             url: randomDrinkURL,
             method: "GET"
         }).then(function (response) {
-            const drink = response.drinks[0];
-
-            if(drink.strAlcoholic !== 'Alcoholic') { // TODO find a better way to ensure first drink is alcoholic
-                return randomDrink();
-            }
-
-            //           drink to display  |    title element     |  description element
             displayDrink(response.drinks[0], $('#randomdrinktitle'), $("#randomText"));
         });
     }
@@ -32,8 +25,6 @@ $(document).ready(function () {
             // Remove the existing drink that's selected, and add the new one
             $("#classic-drink-title").empty();
             $(".classic-drinks").empty();
-
-            //           drink to display  |       title element     |     description element
             displayDrink(response.drinks[0], $("#classic-drink-title"), $(".classic-drinks"));
         });
     }
