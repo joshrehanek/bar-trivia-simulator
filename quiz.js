@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     //DOM Variables
     const scoreEl = $("#score")
     const categoryEl = $("#category");
@@ -49,7 +50,30 @@ $(document).ready(function () {
 
         cheer.pause();
         jeer.pause();
-        
+        function fix (errorString){
+            if(errorString.includes("&#039;")){
+                console.log("its in there")
+            }
+            else {(errorString.includes("&#039;"))
+                    console.log("its not there")
+            }
+            while(errorString.includes("&#039;")){
+                errorString = errorString.replace("&#039;", "\'")
+                }
+            while(errorString.includes("&quot;")){
+                errorString = errorString.replace("&quot;","\"")
+                }
+            while(errorString.includes("&amp;")){
+                errorString = errorString.replace("&amp;","&")
+            }
+            while(errorString.includes("&Uuml;")){
+                errorString = errorString.replace("&Uuml;","Ü")
+            }    
+            while(errorString.includes("&eacute;")){
+                errorString = errorString.replace("&eacute;","é")
+            }        
+            return errorString
+        }
         //sets currentQuestion equal to questions index
         let currentQuestion = questions[questionIndex];
         //set correctAnswer equal to the correct answer of the current question
@@ -135,12 +159,10 @@ $(document).ready(function () {
         }
     });
 
+
+
     //call ApiRequest() function
     sendApiRequest();
 
-    function fix(html) {
-        var txt = document.createElement("textarea");
-        txt.innerHTML = html;
-        return txt.value;
-    }
+
 })
