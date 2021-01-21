@@ -3,24 +3,30 @@ $(document).ready(function () {
 
     function randomDrink() {
         // this random url will be used as the 'Drink of the Hour' card.
-        const randomDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php?a=Alcoholic"
+        const randomDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
         // ajax call for randomDrinkURL
         $.ajax({
             url: randomDrinkURL,
             method: "GET"
         }).then(function (response) {
-            const drink = response.drinks[0];
             // uses jQuery to grab randomdrinktitle section
             let randomDrinkTitle = $('#randomdrinktitle');
             // uses jQuery to grab randomText section
             let randomText = $("#randomText");
-            
+            // variable for if drink is alcoholic or not
+            let isAlcoholic = response.drinks[0].strAlcoholic
+            console.log(isAlcoholic);
+            if (isAlcoholic != "Alcoholic") {
+                randomDrinkTitle = "";
+                randomText = "";
+                randomDrink();
+            }
             // pulling the image from the ajax
-            var imgURL = drink.strDrinkThumb
+            var imgURL = response.drinks[0].strDrinkThumb
             // making an element for the img to append to
             var image = $("<img>").attr("src", imgURL);
             // pulls drink name
-            var randomDrinkName = drink.strDrink
+            var randomDrinkName = response.drinks[0].strDrink
             // sets random name var equal to a new line of text displaying the drink name
             var randomName = $("<p>").text(`${randomDrinkName}`);
             // appends randomName to 
@@ -28,26 +34,26 @@ $(document).ready(function () {
             // emptys randomText area
             randomText.empty();
             // pulls glass name
-            let glass = drink.strGlass
+            let glass = response.drinks[0].strGlass
             // pulls instructions
-            let instructions = drink.strInstructions
+            let instructions = response.drinks[0].strInstructions
             // pulls ingredients
-            let ingredients1 = drink.strIngredient1
-            let ingredients2 = drink.strIngredient2
-            let ingredients3 = drink.strIngredient3
+            let ingredients1 = response.drinks[0].strIngredient1
+            let ingredients2 = response.drinks[0].strIngredient2
+            let ingredients3 = response.drinks[0].strIngredient3
             if (ingredients3 === null) {
                 ingredients3 = '';
             }
-            let ingredients4 = drink.strIngredient4
+            let ingredients4 = response.drinks[0].strIngredient4
             // displays blank string if ingredient is equal to null
             if (ingredients4 === null) {
                 ingredients4 = '';
             }
-            let ingredients5 = drink.strIngredient5
+            let ingredients5 = response.drinks[0].strIngredient5
             if (ingredients5 === null) {
                 ingredients5 = '';
             }
-            let ingredients6 = drink.strIngredient6
+            let ingredients6 = response.drinks[0].strIngredient6
             if (ingredients6 === null) {
                 ingredients6 = '';
             }
@@ -73,37 +79,37 @@ $(document).ready(function () {
             url: searchDrinkURL,
             method: "GET"
         }).then(function (response) {
-            const drink = response.drinks[0];
+
             // pulling the image from ajax
-            var imgURL = drink.strDrinkThumb
+            var imgURL = response.drinks[0].strDrinkThumb
             // making an element for the img to append to
             var image = $("<img>").attr("src", imgURL);
             // uses jQuery to grab classic-drink-title id
             let classicDrinkTitleEl = $('#classic-drink-title');
             // grabs drink name
-            let name = drink.strDrink
+            let name = response.drinks[0].strDrink
             // uses jQuery to grab the classic-drinks class
             let drinksDiv = $(".classic-drinks");
             // emptys drinksDiv
             drinksDiv.empty();
             // pulls glass type from ajax  
-            let glass = drink.strGlass
+            let glass = response.drinks[0].strGlass
             // pulls instructions from ajax 
-            let instructions = drink.strInstructions
+            let instructions = response.drinks[0].strInstructions
             // pulls ingredients from ajax 
-            let ingredients1 = drink.strIngredient1
-            let ingredients2 = drink.strIngredient2
-            let ingredients3 = drink.strIngredient3
-            let ingredients4 = drink.strIngredient4
+            let ingredients1 = response.drinks[0].strIngredient1
+            let ingredients2 = response.drinks[0].strIngredient2
+            let ingredients3 = response.drinks[0].strIngredient3
+            let ingredients4 = response.drinks[0].strIngredient4
             // displays blank string if ingredient is equal to null
             if (ingredients4 === null) {
                 ingredients4 = '';
             }
-            let ingredients5 = drink.strIngredient5
+            let ingredients5 = response.drinks[0].strIngredient5
             if (ingredients5 === null) {
                 ingredients5 = '';
             }
-            let ingredients6 = drink.strIngredient6
+            let ingredients6 = response.drinks[0].strIngredient6
             if (ingredients6 === null) {
                 ingredients6 = '';
             }
