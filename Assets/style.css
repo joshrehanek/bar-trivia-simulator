@@ -1,26 +1,19 @@
 section {
-    background-image: url("./images/barBackground.jpg");
+    background-color: #e79e4f;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .medium-8 {
-    background-color: rgb(153, 170, 187, 0.7);
     font-size: xx-large;
-    font-family: 'Smokum', 'cursive';
+    font-family:Arial, Helvetica, sans-serif;
     text-align: center;
 }
 .button {
     font-size: 7.0rem;
-    /* padding: 1rem 0;
-    width: 20rem;
-    text-align: center;
-    border: 1px solid #1779ba;
-    margin-bottom: 1rem;
-    color: #333; */
 }
 .expanded {
-    background-color: rgb(153, 170, 187, .7)
+    background-color: rgba(37, 43, 48, 0.7)
 }
 .button:hover {
     cursor: pointer;
@@ -48,16 +41,10 @@ form {
     border: 24px outset #A48914;
     border-radius: 26px;
 }
-/* "      END      " */
-/* uniform title for drinks*/
-.drankTitil {
-    font-family: 'Rye', 'cursive';
-}
-/* "      END      " */
+
 .card {
     background-color: transparent;
     width: 10rem;
-    height: min-content;
     text-align: center;
 }
 .card-divider {
